@@ -13,7 +13,8 @@ class CreateMessageRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        //autoriza a cualquiera
+        return true;
     }
 
     /**
@@ -24,7 +25,19 @@ class CreateMessageRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'message' => ['required','max:160'],
+        ];
+    }
+
+    /**
+     * Get the custom messages
+     *
+     * @return array
+     */
+    public function messages(){
+        return [
+            'message.required' => 'Por favor escribe un mensaje',
+            'message.max' => 'El mensaje no puede superar los :max carácteres' 
         ];
     }
 }
