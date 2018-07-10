@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class PagesController extends Controller{
     
     public function home (){
-        $messages = Message::all();
+        $messages = Message::paginate(10);
         // dd($messages); /* var_dump() de Laravel */
         return view('welcome',[
             'messages' => $messages
