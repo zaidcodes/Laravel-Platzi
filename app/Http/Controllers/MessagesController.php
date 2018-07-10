@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class MessagesController extends Controller
 {
-    public function show($id){
-        $message = Message::find($id);
+    public function show(Message $message){
+        // $message = Message::find($id);
 
         return view('messages.show',[
             'message' => $message
