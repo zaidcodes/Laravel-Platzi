@@ -8,11 +8,19 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="about">About</a>
-                </li>
             </ul>
         </nav>
+    </div>
+    <div class="row">
+        @foreach ($messages as $message)
+            <div class="col-6">
+            <img class="img-thumbnail" src="{{$message['image']}}">
+                <p class="card-text">
+                    {{ $message['content'] }}
+                    <a href="/messages/{{ $message['id'] }}">More...</a>
+                </p>
+            </div>
+        @endforeach
     </div>
 @endsection
 
