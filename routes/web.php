@@ -12,7 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $links = [
+        'https://github.com/zaidcodes'=>'Github',
+        'https://twitter.com/zaidcodes'=>'Instagram',
+        'https://instagram.com/zaidcodes'=>'Twitter',
+        'https://platzi.com/@zaidcodes'=>'Platzi'
+    ];
+    return view('welcome',[
+        'teacher' => 'Guido Contreras Woda',
+        'links' => $links
+    ]);
 });
 Route::get('/about', function () {
     return view('about');
