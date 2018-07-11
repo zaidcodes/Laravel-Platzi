@@ -55,10 +55,8 @@ class UsersController extends Controller
 
         $me = $request->user();
         $message = $request->input('message');
-        
-        $conversation = Conversation::create();
-        $conversation->users()->attach($me);
-        $conversation->users()->attach($user);
+        //Hay ya una conversacion?
+        $conversation = Conversation::between($me,$user);
 
         $privateMessage = PrivateMessage::create([
             'conversation_id' => $conversation->id,
