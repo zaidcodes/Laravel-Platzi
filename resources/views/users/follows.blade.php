@@ -9,7 +9,10 @@
                     <a class="card-body" href="/{{ $follow->username }}">
                         <img class="img-thumbnail card-img-top img-fluid" src="{{$follow->avatar}}" alt="Card image cap">
                         <div class="card-body">
-                            <p class="h2 card-text">{{ $follow->username }}</p>
+                            <p class="h2 card-text row">{{ $follow->username }}</p>
+                            <p class="row">
+                                @include('users.actionFollow')
+                            </p>
                         </div>
                     </a>
                 </li>

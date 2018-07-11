@@ -3,30 +3,21 @@
 @section('content')
     @if($user)   
         <h1>{{ $user->name }}</h1>
-        <a href="/{{ $user->username }}/follows" class="btn btn-link">
-            Sigue a <span class="badge badge-light">{{ $user->follows->count() }}</span>
+        <a href="/{{ $user->username }}/follows" class="btn btn-info">
+            Sigue a <span class="badge badge-dark">{{ $user->follows->count() }}</span>
         </a>
-        <a href="/{{ $user->username }}/followers" class="btn btn-link">
-            Seguidores <span class="badge badge-light">{{ $user->followers->count() }}</span>
+        <a href="/{{ $user->username }}/followers" class="btn btn-info">
+            Seguidores <span class="badge badge-dark">{{ $user->followers->count() }}</span>
         </a>
         @if (Auth::check())
-            @if (Auth::user()->isFollowing($user))
-                <form action="/{{ $user->username }}/unfollow" method="POST">
-                    @csrf
-                    {{-- @if (session('success'))
-                        <span class="text-success">{{ session('success') }}</span>
-                    @endif --}}
-                    <button class="btn btn-danger">Unfollow</button>
-                </form>
-            @else
-                <form action="/{{ $user->username }}/follow" method="POST">
-                    @csrf
-                    {{-- @if (session('success'))
-                        <span class="text-success">{{ session('success') }}</span>
-                    @endif --}}
-                    <button class="btn btn-primary">Follow</button>
-                </form>
-            @endif  
+            <form class="row py-3" action="/{{ $user->username }}/dms" method="POST">
+                @csrf
+                <input type="text" name="message" class="form-control col-8 mx-auto">
+                <button type="submit" class="btn btn-success col-3 mx-auto">
+                    Enviar DM
+                </button> 
+            </form>
+            @include('users.actionFollow')
         @endif
         <div class="row">
             @forelse ($messages as $message)
