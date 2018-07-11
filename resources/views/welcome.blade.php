@@ -32,13 +32,9 @@
         @empty
             <p>No hay mensajes destacados</p>
         @endforelse
-        @if (count($messages))
-        <div class="mt-5 mx-auto">
-            {{-- {{ $messages->links() }} --}}
-            {{ $messages }}
-        </div>
-        @endif
     </div>
+    @include('messages.pagination')
+    
 @endsection
 
 @section('title')
