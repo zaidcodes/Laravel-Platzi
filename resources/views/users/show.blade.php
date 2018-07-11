@@ -3,7 +3,13 @@
 @section('content')
     @if($user)   
         <h1>{{ $user->name }}</h1>
-        
+        <a href="/{{ $user->username }}/follows" class="btn btn-link">
+            Sigue a <span class="badge badge-light">{{ $user->follows->count() }}</span>
+        </a>
+        <a href="/{{ $user->username }}/followed" class="btn btn-link">
+            Seguidores <span class="badge badge-light">{{ $user->followers->count() }}</span>
+        </a>
+
         @if (Auth::check())
             @if (Auth::user()->isFollowing($user))
                 <form action="/{{ $user->username }}/unfollow" method="POST">
