@@ -17,13 +17,15 @@
             Seguidores <span class="badge badge-dark">{{ $user->followers->count() }}</span>
         </a>
         @if (Auth::check())
-            <form class="row py-3 mx-auto" action="/{{ $user->username }}/dms" method="POST">
-                @csrf
-                <input type="text" name="message" class="form-control col-9 d-inline" placeholder="Mensaje">
-                <button type="submit" class="btn btn-success col-2 d-inline mx-auto">
-                    Enviar DM
-                </button> 
-            </form>
+            @if (Gate::allows('dms',$user))
+                <form class="row py-3 mx-auto" action="/{{ $user->username }}/dms" method="POST">
+                    @csrf
+                    <input type="text" name="message" class="form-control col-9 d-inline" placeholder="Mensaje">
+                    <button type="submit" class="btn btn-success col-2 d-inline mx-auto">
+                        Enviar DM
+                    </button> 
+                </form>
+            @endif
         @endif
         <div class="row">
             @forelse ($messages as $message)
