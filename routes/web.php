@@ -19,6 +19,7 @@ Auth::routes();
 Route::get('/','PagesController@home');
 
 Route::get('/{username}/follows','UsersController@follows');
-Route::post('/{username}/follow','UsersController@follow');
+Route::post('/{username}/follow','UsersController@follow')
+->middleware('auth');
 Route::get('/{username}','UsersController@show');
 
