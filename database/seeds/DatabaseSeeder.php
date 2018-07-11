@@ -11,12 +11,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class,50)->create()->each(function(App\user $user){
+        //Usuarios creados
+        $users = factory(App\User::class,50)->create();
+        
+        $users->each(function(App\user $user) use ($users) {
+            //Creando mensajes por cada usuario
             factory(App\Message::class)
             ->times(5)
             ->create([
                 'user_id' => $user->id,
             ]);
+            //Siguiendo usuarios por cada usuario
+            $user->follows()->sync(
+                $users->random(10)
+            );
         });
     }
 }
