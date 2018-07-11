@@ -12,7 +12,7 @@
         </nav>
     </div>
     <div class="row">
-        <form action="messages/create" method="POST">
+        <form class="col-12" action="messages/create" method="POST">
             {{ csrf_field() }}
             <div class="form-group">
                 <input type="text" name="message" class="form-control @if($errors->has('message')) is-invalid @endif" placeholder="Qué estás pensando?">
