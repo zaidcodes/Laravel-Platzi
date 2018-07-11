@@ -21,5 +21,7 @@ Route::get('/','PagesController@home');
 Route::get('/{username}/follows','UsersController@follows');
 Route::post('/{username}/follow','UsersController@follow')
 ->middleware('auth');
+Route::post('/{username}/unfollow','UsersController@unfollow')
+->middleware('auth');
 Route::get('/{username}','UsersController@show');
 

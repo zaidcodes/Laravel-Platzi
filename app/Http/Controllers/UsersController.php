@@ -19,9 +19,17 @@ class UsersController extends Controller
     public function follow($username, Request $request){
         $user = $this->findByUsername($username);
         $me = $request->user();
-
+        
         $me->follows()->attach($user);
         return redirect("/$username")->withSuccess('Usuario seguido!');
+    }
+  
+    public function unfollow($username, Request $request){
+        $user = $this->findByUsername($username);
+        $me = $request->user();
+
+        $me->follows()->detach($user);
+        return redirect("/$username")->withSuccess('Usuario no seguido!');
     }
 
     public function follows($username){
