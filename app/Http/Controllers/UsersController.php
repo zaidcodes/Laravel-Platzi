@@ -35,7 +35,16 @@ class UsersController extends Controller
     public function follows($username){
         $user = $this->findByUsername($username);
         return view('users.follows', [
-            'user' => $user
+            'user' => $user,
+            'follows' => $user->follows,
+        ]);
+    }
+
+    public function followers($username){
+        $user = $this->findByUsername($username);
+        return view('users.follows', [
+            'user' => $user,
+            'follows' => $user->followers,
         ]);
     }
 

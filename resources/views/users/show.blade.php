@@ -6,25 +6,24 @@
         <a href="/{{ $user->username }}/follows" class="btn btn-link">
             Sigue a <span class="badge badge-light">{{ $user->follows->count() }}</span>
         </a>
-        <a href="/{{ $user->username }}/followed" class="btn btn-link">
+        <a href="/{{ $user->username }}/followers" class="btn btn-link">
             Seguidores <span class="badge badge-light">{{ $user->followers->count() }}</span>
         </a>
-
         @if (Auth::check())
             @if (Auth::user()->isFollowing($user))
                 <form action="/{{ $user->username }}/unfollow" method="POST">
                     @csrf
-                    @if (session('success'))
+                    {{-- @if (session('success'))
                         <span class="text-success">{{ session('success') }}</span>
-                    @endif
+                    @endif --}}
                     <button class="btn btn-danger">Unfollow</button>
                 </form>
             @else
                 <form action="/{{ $user->username }}/follow" method="POST">
                     @csrf
-                    @if (session('success'))
+                    {{-- @if (session('success'))
                         <span class="text-success">{{ session('success') }}</span>
-                    @endif
+                    @endif --}}
                     <button class="btn btn-primary">Follow</button>
                 </form>
             @endif  
