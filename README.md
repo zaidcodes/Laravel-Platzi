@@ -43,3 +43,6 @@ Curso de Laravel con Platzi
 # create the symbolic link, you may use the storage:link
 
     - php artisan storage:link
+
+# test con php unit
+    - ./vendor/bin/phpunit
