@@ -29,7 +29,7 @@ class MessagesController extends Controller
 
     public function search(Request $request){
         $query = $request->input('query');
-        $messages = Message::where('content','LIKE','%' . $query . '%')->orderBy('created_at','desc')->paginate(10);
+        $messages = Message::with('user')->where('content','LIKE','%' . $query . '%')->orderBy('created_at','desc')->paginate(10);
         return view('messages.index',[
             'messages' => $messages,
         ]);
