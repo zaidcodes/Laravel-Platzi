@@ -40,4 +40,6 @@ Curso de Laravel con Platzi
 # Generar codigo para usuarios (login/registro)
     - php artisan make:auth
 
+# create the symbolic link, you may use the storage:link
 
+    - php artisan storage:link
