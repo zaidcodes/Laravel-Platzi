@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Message;
+use Illuminate\Http\Request;
 use App\Http\Requests\CreateMessageRequest;
 
 class MessagesController extends Controller
@@ -24,6 +25,14 @@ class MessagesController extends Controller
             'image' => $image->store('messages', 'public'),
         ]);
         return redirect('/messages/'.$message->id);
+    }
+
+    public function search(Request $request){
+        $query = $request->input('query');
+        $messages = Message::where('content','LIKE','%' . $query . '%')->orderBy('created_at','desc')->paginate(10);
+        return view('messages.index',[
+            'messages' => $messages,
+        ]);
     }
 
 }

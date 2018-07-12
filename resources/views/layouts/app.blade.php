@@ -33,7 +33,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-
+                    <li class="nav-item">
+                        <form action="{{ url('messages') }}">
+                            <div class="input-group">
+                                <input type="text" name="query" class="form-control" placeholder="Search" required>
+                                <button class="btn btn-success">
+                                    Search
+                                </button>
+                            </div>
+                        </form>
+                    </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
